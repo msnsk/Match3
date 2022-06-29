@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Fonts/Xolonium-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Aliens/alienPink_square.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Aliens/alienPink_round.png" type="Texture" id=3]
+[ext_resource path="res://UI/StartScreen.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Sounds/alien.wav" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=5]
+size = 100
+outline_size = 16
+outline_color = Color( 0.992157, 0.988235, 0.988235, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+outline_size = 5
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=6]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
+
+[node name="StartScreen" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.286275, 0.25098, 0.411765, 1 )
+script = ExtResource( 4 )
+
+[node name="GameTitle" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 2.0
+margin_top = 154.0
+margin_right = 2.0
+margin_bottom = 397.0
+custom_colors/font_color = Color( 0.945098, 0.611765, 0.717647, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "match
+aliens"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="StartButtonLabel" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 777.0
+margin_bottom = 1026.0
+custom_colors/font_color = Color( 0.678431, 0.411765, 0.494118, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "Tap
+
+
+
+
+to Start"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="StartButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = 271.0
+margin_right = 70.0
+margin_bottom = 411.0
+rect_min_size = Vector2( 140, 140 )
+shortcut = SubResource( 7 )
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -20.0
+pitch_scale = 2.0
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="finished" from="ButtonSound" to="." method="_on_ButtonSound_finished"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Pieces/Piece.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sounds/spawn.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Sounds/match.wav" type="AudioStream" id=4]
+
+[node name="Piece" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+offset = Vector2( 35, -35 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="SpawnSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -20.0
+
+[node name="MatchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -20.0
